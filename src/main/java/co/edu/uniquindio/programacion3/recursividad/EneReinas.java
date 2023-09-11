@@ -1,8 +1,11 @@
 package co.edu.uniquindio.programacion3.recursividad;
 
 public class EneReinas {
+
+
+
     public static void main(String[] args) {
-        char[][] tablero = crearTablero(7);
+        char[][] tablero = crearTablero(5);
         acomodarReinas(tablero, 0);
         imprimirTablero(tablero);
     }
@@ -32,15 +35,11 @@ public class EneReinas {
 
         if (verficarMovimiento(tablero, fila, columna)) {
             tablero[fila][columna] = '1';
-
-            System.out.println();
             if (acomodarReinas(tablero, columna + 1)) {
                 return true;
             }
 
             tablero[fila][columna] = '0'; // Deshacer el movimiento si no lleva a una solución
-            imprimirTablero(tablero);
-            System.out.println();
         }
 
         return acomodarReinasEnColumna(tablero, columna, fila + 1);
