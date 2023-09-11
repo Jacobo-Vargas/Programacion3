@@ -6,7 +6,9 @@ public class EneReinas {
 
     public static void main(String[] args) {
         char[][] tablero = crearTablero(5);
+
         acomodarReinas(tablero, 0);
+
         imprimirTablero(tablero);
     }
 
