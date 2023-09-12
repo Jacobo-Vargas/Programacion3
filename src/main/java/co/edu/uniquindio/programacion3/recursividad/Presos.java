@@ -15,39 +15,38 @@ public class Presos {
 
     public static void main(String[] args) {
         Presos p = new Presos();
-        p.carcel[0][0] = 's';
-        p.resuelve(5, 7);
+        p.ronda(0,0);
+        //p.resuelve(5, 7);
         p.verificarPresos(26);
-        imprimirCarcel(p.carcel);
+        p.imprimirCarcel(p.carcel);
+
 
     }
 
-    public void resuelve(int x, int y) {
-        if (ronda(x, y)) {
-            carcel[x][y] = 'G';
-        }
-    }
+//    public void resuelve(int i, int j) {
+//        if(ronda(i,j)){
+//            carcel[i][j-1] = 'G';
+//            imprimirCarcel(carcel);
+//        }
+//    }
+
+
 
     public boolean ronda(int i, int j) {
-
         if (j > carcel[0].length - 1 || j < 0) {
             return false;
         } else if (i > carcel.length - 1 || i < 0) {
             return false;
         }
-        if (carcel[i][j] == 'G') {
-            return true;
-        }
 
-        if (carcel[i][j] == 'p') {
+        if (carcel[i][j] == 'x') {
             presos += 1;
 
-        }
-        if (carcel[i][j] == '#' || carcel[i][j] == '*' || carcel[i][j] == 'f') {
+        } else if (carcel[i][j] == '*' || carcel[i][j] == 'p') {
             return false;
         }
 
-        carcel[i][j] = '*';
+        carcel[i][j] = '*';// marca las posiciones verificadas
 
         boolean result;
         result = ronda(i, j + 1);// hacia la derecha
@@ -63,22 +62,18 @@ public class Presos {
             return true;
         }
         result = ronda(i, j - 1);// hacia la izquierda
-        if (result) {
-            return true;
-        }
-        carcel[i][j] = 'f';
-        return false;
+        return result;
     }
 
     public void verificarPresos(int presosExistentes) {
-        if (presosExistentes - presos == 0) {
+        if (presosExistentes - presos == presosExistentes) {
             System.out.println("Los presos estan completos");
         } else {
-            System.out.println("Faltan " + (presosExistentes - presos) + " presos.");
+            System.out.println("Faltan " + (presos) + " presos.");
         }
     }
 
-    public static void imprimirCarcel(char[][] carcel) {
+    public void imprimirCarcel(char[][] carcel) {
         for (int i = 0; i < carcel.length; i++) {
             for (int j = 0; j < carcel.length; j++) {
                 System.out.print("[" + carcel[i][j] + "]");
