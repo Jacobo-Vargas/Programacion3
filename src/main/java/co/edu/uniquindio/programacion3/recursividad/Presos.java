@@ -19,7 +19,7 @@ public class Presos {
         p.carcel[0][0] = 'S';
         p.resuelve(0, 0);
         p.verificarPresos(26);
-        p.imprimirCarcel(p.carcel);
+//        p.imprimirCarcel(p.carcel);
 
 
     }
