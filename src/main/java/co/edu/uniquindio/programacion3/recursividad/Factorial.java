@@ -7,7 +7,7 @@ public class Factorial {
 
     }
 
-    public Double factorial(int numero){
+    public int factorial(int numero){
         if(numero == 1 ){
             return 1.0;
         }
